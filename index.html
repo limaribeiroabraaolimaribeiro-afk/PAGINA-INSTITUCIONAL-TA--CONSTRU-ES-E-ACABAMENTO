@@ -23,12 +23,20 @@
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/logo.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin-800-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin-400-normal.woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/hero-piscina.jpg" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
+
+<script>
+(function(){
+  try{
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.documentElement.classList.add('motion');
+    }
+  }catch(e){}
+})();
+</script>
 
 <script type="application/ld+json">
 {
@@ -47,48 +55,43 @@
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 <!-- ===================== HEADER ===================== -->
-<header class="site-header" id="siteHeader">
-  <div class="container site-header__inner">
+<header class="site-header" id="siteHeader" data-intro="header">
+  <div class="site-header__inner">
     <a href="#topo" class="brand" aria-label="TA Construções e Acabamento - página inicial">
       <img src="assets/logo-header.png" width="300" height="300" alt="Logo TA Construções e Acabamento" class="brand__logo">
     </a>
 
-    <div class="site-header__actions">
-      <a class="header-wa" href="#" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento." aria-label="Solicitar orçamento pelo WhatsApp">
-        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.12.13-.2.2-.33a.36.36 0 0 0 0-.35c-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 .98.71 1.93.81 2.06s1.4 2.13 3.38 2.99a11.4 11.4 0 0 0 1.13.42c.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
-        <span>Orçamento</span>
-      </a>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a href="#servicos" class="nav-link">Serviços</a>
+      <a href="#portfolio" class="nav-link">Projetos</a>
+      <a href="#processo" class="nav-link">Processo</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a class="desktop-nav__cta" href="#" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">Solicitar orçamento</a>
+    </nav>
 
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menu">
-        <span class="menu-toggle__bar"></span>
-        <span class="menu-toggle__bar"></span>
-        <span class="menu-toggle__bar"></span>
-      </button>
-    </div>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menu">
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+    </button>
   </div>
-
-  <nav class="desktop-nav" aria-label="Navegação principal">
-    <a href="#servicos">Serviços</a>
-    <a href="#portfolio">Portfólio</a>
-    <a href="#diferenciais">Diferenciais</a>
-    <a href="#contato">Contato</a>
-    <a class="desktop-nav__cta" href="#" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">Solicitar orçamento</a>
-  </nav>
 </header>
 
-<div class="mobile-nav" id="mobileNav" data-open="false">
+<!-- ===================== MOBILE MENU ===================== -->
+<div class="mobile-nav" id="mobileNav" data-open="false" aria-hidden="true">
   <nav aria-label="Navegação mobile">
-    <a href="#servicos" class="mobile-nav__link">Serviços</a>
-    <a href="#portfolio" class="mobile-nav__link">Portfólio</a>
-    <a href="#diferenciais" class="mobile-nav__link">Diferenciais</a>
-    <a href="#contato" class="mobile-nav__link">Contato</a>
+    <a href="#servicos" class="mobile-nav__link"><span class="mobile-nav__num">01</span>Serviços</a>
+    <a href="#portfolio" class="mobile-nav__link"><span class="mobile-nav__num">02</span>Projetos</a>
+    <a href="#processo" class="mobile-nav__link"><span class="mobile-nav__num">03</span>Processo</a>
+    <a href="#contato" class="mobile-nav__link"><span class="mobile-nav__num">04</span>Contato</a>
+  </nav>
+  <div class="mobile-nav__footer">
     <a href="#" class="mobile-nav__cta" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">
       <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.12.13-.2.2-.33a.36.36 0 0 0 0-.35c-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 .98.71 1.93.81 2.06s1.4 2.13 3.38 2.99a11.4 11.4 0 0 0 1.13.42c.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
       Chamar no WhatsApp
     </a>
-  </nav>
+    <p class="mobile-nav__info">Jaraguá do Sul e região<br>(47) 9 9282-7227</p>
+  </div>
 </div>
-<div class="mobile-nav__backdrop" id="mobileNavBackdrop"></div>
 
 <main id="conteudo">
 
@@ -103,235 +106,332 @@
       fetchpriority="high"
       decoding="async">
     <div class="hero__overlay"></div>
+    <div class="hero__vignette"></div>
   </div>
 
   <div class="container hero__content">
-    <p class="hero__eyebrow reveal">TA CONSTRUÇÕES E ACABAMENTO</p>
-    <h1 class="hero__title reveal">
-      DO PROJETO AO<br>
-      ACABAMENTO,<br>
-      ENTREGAMOS<br>
-      <span class="gold">QUALIDADE.</span>
+    <p class="hero__eyebrow" data-intro="eyebrow"><span class="hero__eyebrow-rule"></span>TA CONSTRUÇÕES E ACABAMENTO</p>
+
+    <h1 class="hero__title">
+      <span class="line"><span class="line__in" data-intro="line">DO PROJETO AO</span></span>
+      <span class="line"><span class="line__in" data-intro="line">ACABAMENTO,</span></span>
+      <span class="line"><span class="line__in" data-intro="line">ENTREGAMOS</span></span>
+      <span class="line"><span class="line__in line__in--gold" data-intro="gold">QUALIDADE.</span></span>
     </h1>
-    <p class="hero__text reveal">Construção, porcelanato e acabamentos executados com atenção aos detalhes e compromisso com cada projeto.</p>
 
-    <a href="#" class="btn btn--primary hero__cta reveal" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.12.13-.2.2-.33a.36.36 0 0 0 0-.35c-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 .98.71 1.93.81 2.06s1.4 2.13 3.38 2.99a11.4 11.4 0 0 0 1.13.42c.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
-      SOLICITAR ORÇAMENTO
-    </a>
+    <p class="hero__text" data-intro="text">Construção, porcelanato e acabamentos executados com atenção aos detalhes e compromisso com cada projeto.</p>
 
-    <ul class="hero__perks reveal">
-      <li><svg viewBox="0 0 24 24" class="icon icon--sm" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Compromisso com prazos</li>
-      <li><svg viewBox="0 0 24 24" class="icon icon--sm" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Acabamento de qualidade</li>
-      <li><svg viewBox="0 0 24 24" class="icon icon--sm" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Atendimento personalizado</li>
+    <div class="hero__actions" data-intro="cta">
+      <a href="#" class="btn btn--primary" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.12.13-.2.2-.33a.36.36 0 0 0 0-.35c-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 .98.71 1.93.81 2.06s1.4 2.13 3.38 2.99a11.4 11.4 0 0 0 1.13.42c.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+        SOLICITAR ORÇAMENTO
+      </a>
+      <a href="#portfolio" class="hero__secondary">Ver projetos<span class="hero__secondary-arrow" aria-hidden="true">↓</span></a>
+    </div>
+
+    <ul class="hero__perks" data-intro="perks">
+      <li>Compromisso com prazos</li>
+      <li>Acabamento de qualidade</li>
+      <li>Atendimento personalizado</li>
     </ul>
+  </div>
+
+  <div class="hero__scroll" data-intro="scroll" aria-hidden="true">
+    <span class="hero__scroll-label">ROLE</span>
+    <span class="hero__scroll-line"></span>
   </div>
 </section>
 
 <!-- ===================== SERVIÇOS ===================== -->
 <section class="services" id="servicos">
   <div class="container">
-    <p class="eyebrow reveal">NOSSOS SERVIÇOS</p>
-    <h2 class="section-title reveal">SOLUÇÕES PARA SUA OBRA<br>DO INÍCIO AO <span class="gold">ACABAMENTO.</span></h2>
+    <header class="section-head">
+      <p class="eyebrow" data-reveal>NOSSOS SERVIÇOS</p>
+      <h2 class="section-title" data-reveal-lines>
+        <span class="line"><span class="line__in">SOLUÇÕES PARA SUA OBRA,</span></span>
+        <span class="line"><span class="line__in">DO INÍCIO AO <span class="gold">FIM.</span></span></span>
+      </h2>
+    </header>
 
-    <div class="services__grid" id="servicesGrid">
+    <div class="services__layout">
+      <ul class="services__list" id="servicesList">
 
-      <article class="service-card reveal">
-        <span class="service-card__num">01</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
-        <h3>Porcelanato e Revestimentos</h3>
-        <p>Assentamento de pisos, paredes e peças de grandes formatos com precisão e acabamento profissional.</p>
-      </article>
+        <li class="service" data-reveal data-service="0">
+          <a href="#" class="service__row" data-wa data-wa-text="Olá! Gostaria de um orçamento de porcelanato e revestimentos.">
+            <span class="service__num">01</span>
+            <span class="service__body">
+              <span class="service__title">Porcelanato<br>e Revestimentos</span>
+              <span class="service__desc">Assentamento de pisos, paredes e peças de grandes formatos com precisão.</span>
+            </span>
+            <span class="service__thumb"><img src="assets/img/portfolio-escada-porcelanato.jpg" alt="Piso e escada revestidos em porcelanato" loading="lazy" decoding="async" width="1050" height="1400"></span>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
-      <article class="service-card reveal">
-        <span class="service-card__num">02</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M3 16h18v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M3 16V9a2 2 0 0 1 2-2h6l3 3h5a2 2 0 0 1 2 2v4"/></svg>
-        <h3>Bancadas e Ilhas em Porcelanato</h3>
-        <p>Fabricação e acabamento de bancadas, ilhas e superfícies personalizadas.</p>
-      </article>
+        <li class="service" data-reveal data-service="1">
+          <a href="#" class="service__row" data-wa data-wa-text="Olá! Gostaria de um orçamento de bancada em porcelanato.">
+            <span class="service__num">02</span>
+            <span class="service__body">
+              <span class="service__title">Bancadas e Nichos<br>em Porcelanato</span>
+              <span class="service__desc">Bancadas, ilhas, cubas esculpidas e nichos feitos sob medida.</span>
+            </span>
+            <span class="service__thumb"><img src="assets/img/portfolio-bancada-marrom.jpg" alt="Bancada dupla em porcelanato marrom com cubas esculpidas" loading="lazy" decoding="async" width="1032" height="774"></span>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
-      <article class="service-card reveal">
-        <span class="service-card__num">03</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M4 12h16"/><path d="M5 12v3a5 5 0 0 0 5 5h4a5 5 0 0 0 5-5v-3"/><path d="M8 12V5a1 1 0 0 1 1-1h1"/></svg>
-        <h3>Pias e Lavatórios</h3>
-        <p>Pias esculpidas, cubas, lavatórios e soluções feitas sob medida.</p>
-      </article>
+        <li class="service" data-reveal data-service="2">
+          <a href="#" class="service__row" data-wa data-wa-text="Olá! Gostaria de um orçamento de piscina.">
+            <span class="service__num">03</span>
+            <span class="service__body">
+              <span class="service__title">Piscinas</span>
+              <span class="service__desc">Construção, revestimento e acabamento de piscinas e bordas.</span>
+            </span>
+            <span class="service__thumb"><img src="assets/img/portfolio-piscina.jpg" alt="Piscina de alvenaria com borda em porcelanato" loading="lazy" decoding="async" width="1054" height="1400"></span>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
-      <article class="service-card reveal">
-        <span class="service-card__num">04</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M4 11h16v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M7 11V6a3 3 0 0 1 5.6-1.5"/><path d="M7 20v2M15 20v2"/></svg>
-        <h3>Banheiros e Áreas de Banho</h3>
-        <p>Revestimentos, nichos, banheiras e acabamentos completos para banheiros.</p>
-      </article>
+        <li class="service" data-reveal data-service="3">
+          <a href="#" class="service__row" data-wa data-wa-text="Olá! Gostaria de um orçamento para banheiro ou área molhada.">
+            <span class="service__num">04</span>
+            <span class="service__body">
+              <span class="service__title">Banheiros e<br>Áreas Molhadas</span>
+              <span class="service__desc">Revestimentos, nichos, lavatórios e acabamentos completos.</span>
+            </span>
+            <span class="service__thumb"><img src="assets/img/portfolio-banheiro.jpg" alt="Banheiro revestido em porcelanato calacatta" loading="lazy" decoding="async" width="720" height="1280"></span>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
-      <article class="service-card reveal">
-        <span class="service-card__num">05</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 9h16M4 15h16"/></svg>
-        <h3>Nichos e Prateleiras</h3>
-        <p>Nichos embutidos e prateleiras revestidas, desenvolvidos de acordo com cada ambiente.</p>
-      </article>
+        <li class="service" data-reveal data-service="4">
+          <a href="#" class="service__row" data-wa data-wa-text="Olá! Gostaria de um orçamento de muros e estruturas.">
+            <span class="service__num">05</span>
+            <span class="service__body">
+              <span class="service__title">Muros e Estruturas</span>
+              <span class="service__desc">Alvenaria, estruturas, coberturas e revestimentos externos.</span>
+            </span>
+            <span class="service__thumb"><img src="assets/img/portfolio-revestimento-cobertura.jpg" alt="Revestimento externo em porcelanato tom corten" loading="lazy" decoding="async" width="1050" height="1400"></span>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
-      <article class="service-card reveal">
-        <span class="service-card__num">06</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M3 21h5v-4h3v-4h3V9h3V5h4"/></svg>
-        <h3>Escadas em Porcelanato</h3>
-        <p>Revestimento e acabamento de escadas, degraus e patamares.</p>
-      </article>
+        <li class="service" data-reveal data-service="5">
+          <a href="#" class="service__row" data-wa data-wa-text="Olá! Gostaria de um orçamento de escada em porcelanato.">
+            <span class="service__num">06</span>
+            <span class="service__body">
+              <span class="service__title">Escadas<br>em Porcelanato</span>
+              <span class="service__desc">Degraus, patamares e acabamento de escadas internas e externas.</span>
+            </span>
+            <span class="service__thumb"><img src="assets/img/portfolio-entrada-escada.jpg" alt="Escadaria externa revestida em porcelanato" loading="lazy" decoding="async" width="788" height="1400"></span>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
-      <article class="service-card reveal service-card--extra" hidden>
-        <span class="service-card__num">07</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M3 16c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0"/><path d="M3 21h18"/><path d="M6 16V8M18 16V8"/></svg>
-        <h3>Piscinas e Áreas Externas</h3>
-        <p>Construção, revestimento e acabamento de piscinas, bordas e áreas externas.</p>
-      </article>
+        <li class="service" data-reveal data-service="6">
+          <a href="#" class="service__row" data-wa data-wa-text="Olá! Gostaria de um orçamento de construção e acabamentos.">
+            <span class="service__num">07</span>
+            <span class="service__body">
+              <span class="service__title">Construção<br>e Acabamentos</span>
+              <span class="service__desc">Execução completa, da estrutura ao acabamento final.</span>
+            </span>
+            <span class="service__thumb"><img src="assets/img/portfolio-cobertura-madeira.jpg" alt="Cobertura em madeira com estrutura aparente" loading="lazy" decoding="async" width="1050" height="1400"></span>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
-      <article class="service-card reveal service-card--extra" hidden>
-        <span class="service-card__num">08</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg>
-        <h3>Construção e Alvenaria</h3>
-        <p>Execução de alvenaria, levantamento de paredes e serviços relacionados à construção.</p>
-      </article>
+      </ul>
 
-      <article class="service-card reveal service-card--extra" hidden>
-        <span class="service-card__num">09</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M3 10 12 3l9 7"/><path d="M5 9v11h14V9"/><path d="M10 20v-6h4v6"/></svg>
-        <h3>Coberturas e Estruturas</h3>
-        <p>Execução de estruturas e coberturas, incluindo soluções em madeira.</p>
-      </article>
-
-      <article class="service-card reveal service-card--extra" hidden>
-        <span class="service-card__num">10</span>
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="m12 3 1.9 4.3 4.6.5-3.5 3 1 4.5-4-2.4-4 2.4 1-4.5-3.5-3 4.6-.5z"/></svg>
-        <h3>Acabamentos Personalizados</h3>
-        <p>Soluções especiais desenvolvidas de acordo com as necessidades de cada obra.</p>
-      </article>
-
+      <div class="services__preview" id="servicesPreview" aria-hidden="true">
+        <div class="services__preview-frame">
+          <img src="assets/img/portfolio-escada-porcelanato.jpg" alt="" loading="lazy" decoding="async" data-preview="0">
+          <img src="assets/img/portfolio-bancada-marrom.jpg" alt="" loading="lazy" decoding="async" data-preview="1">
+          <img src="assets/img/portfolio-piscina.jpg" alt="" loading="lazy" decoding="async" data-preview="2">
+          <img src="assets/img/portfolio-banheiro.jpg" alt="" loading="lazy" decoding="async" data-preview="3">
+          <img src="assets/img/portfolio-revestimento-cobertura.jpg" alt="" loading="lazy" decoding="async" data-preview="4">
+          <img src="assets/img/portfolio-entrada-escada.jpg" alt="" loading="lazy" decoding="async" data-preview="5">
+          <img src="assets/img/portfolio-cobertura-madeira.jpg" alt="" loading="lazy" decoding="async" data-preview="6">
+        </div>
+        <p class="services__preview-hint">Toque em um serviço para<br>solicitar orçamento</p>
+      </div>
     </div>
-
-    <button class="btn btn--ghost services__toggle reveal" id="servicesToggle" aria-expanded="false" aria-controls="servicesGrid">
-      VER TODOS OS SERVIÇOS
-      <svg viewBox="0 0 24 24" class="icon icon--sm" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-    </button>
   </div>
 </section>
 
-<!-- ===================== PORTFÓLIO ===================== -->
-<section class="portfolio" id="portfolio">
-  <div class="container container--bleed">
-    <div class="container">
-      <p class="eyebrow reveal">TRABALHOS REALIZADOS</p>
-      <h2 class="section-title reveal">DETALHES QUE MOSTRAM<br>A QUALIDADE DO NOSSO <span class="gold">TRABALHO.</span></h2>
-    </div>
+<!-- ===================== MONTAGEM ===================== -->
+<section class="montagem" id="montagem">
+  <div class="montagem__stage">
+    <p class="montagem__eyebrow" data-m="eyebrow">CADA PEÇA NO SEU LUGAR</p>
 
-    <div class="carousel" id="carousel">
-      <div class="carousel__track" id="carouselTrack">
+    <div class="bancada" id="bancadaScene" aria-hidden="true">
+      <div class="bancada__scene">
+        <div class="bancada__shadow" data-m="shadow"></div>
+        <div class="bancada__void" data-m="void"></div>
 
-        <figure class="carousel__item" data-index="0">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Escada revestida em porcelanato calacatta, com patamar e acabamento em relevo 3D na parede.">
-            <img src="assets/img/portfolio-escada-marmore.jpg" width="1400" height="1050" alt="Escada revestida em porcelanato calacatta com acabamento em relevo na parede" loading="lazy" decoding="async">
-            <span class="carousel__tag">ESCADAS</span>
-          </button>
-        </figure>
+        <div class="piece piece--base" data-m="base">
+          <span class="pface pface--front"></span>
+        </div>
 
-        <figure class="carousel__item" data-index="1">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Bancada em porcelanato com veios de mármore calacatta e acabamento em meia-esquadria.">
-            <img src="assets/img/portfolio-bancada-ilha.jpg" width="960" height="1280" alt="Bancada e ilha em porcelanato com veios de mármore e acabamento em meia-esquadria" loading="lazy" decoding="async">
-            <span class="carousel__tag">BANCADAS</span>
-          </button>
-        </figure>
+        <div class="piece piece--left" data-m="left">
+          <span class="pface pface--front pface--marble"></span>
+        </div>
 
-        <figure class="carousel__item" data-index="2">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Pia esculpida em porcelanato, integrada à bancada, com cuba entalhada sob medida.">
-            <img src="assets/img/portfolio-pia-esculpida.jpg" width="1032" height="774" alt="Pia esculpida em porcelanato com cuba entalhada sob medida" loading="lazy" decoding="async">
-            <span class="carousel__tag">PIAS E LAVATÓRIOS</span>
-          </button>
-        </figure>
+        <div class="piece piece--right" data-m="right">
+          <span class="pface pface--front pface--marble"></span>
+          <span class="pface pface--side pface--marble-dark"></span>
+        </div>
 
-        <figure class="carousel__item" data-index="3">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Banheiro finalizado com revestimento em porcelanato calacatta do piso ao teto.">
-            <img src="assets/img/portfolio-banheiro.jpg" width="720" height="1280" alt="Banheiro finalizado com revestimento em porcelanato calacatta e lavatório suspenso" loading="lazy" decoding="async">
-            <span class="carousel__tag">BANHEIROS</span>
-          </button>
-        </figure>
+        <div class="piece piece--tampo" data-m="tampo">
+          <span class="pface pface--top pface--marble-light"></span>
+          <span class="pface pface--front pface--marble"></span>
+          <span class="pface pface--tside pface--marble-dark"></span>
+          <span class="bancada__shine" data-m="shine"></span>
+        </div>
 
-        <figure class="carousel__item" data-index="4">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Piscina de alvenaria com borda em porcelanato e cascata, projeto completo de área externa.">
-            <img src="assets/img/portfolio-piscina.jpg" width="1054" height="1400" alt="Piscina de alvenaria com borda em porcelanato e cascata em área externa" loading="lazy" decoding="async">
-            <span class="carousel__tag">PISCINAS</span>
-          </button>
-        </figure>
-
-        <figure class="carousel__item" data-index="5">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Escada revestida em porcelanato com contraste de tonalidades entre os ambientes.">
-            <img src="assets/img/portfolio-escada-porcelanato.jpg" width="1050" height="1400" alt="Escada revestida em porcelanato com contraste de tonalidades" loading="lazy" decoding="async">
-            <span class="carousel__tag">PORCELANATO</span>
-          </button>
-        </figure>
-
-        <figure class="carousel__item" data-index="6">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Bancada dupla em porcelanato marrom, com cubas esculpidas e acabamento espelhado.">
-            <img src="assets/img/portfolio-bancada-marrom.jpg" width="1032" height="774" alt="Bancada dupla em porcelanato marrom com cubas esculpidas" loading="lazy" decoding="async">
-            <span class="carousel__tag">BANCADAS</span>
-          </button>
-        </figure>
-
-        <figure class="carousel__item" data-index="7">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Escadaria externa e estrutura em concreto revestidas em porcelanato de alto tráfego.">
-            <img src="assets/img/portfolio-entrada-escada.jpg" width="788" height="1400" alt="Escadaria externa em porcelanato e estrutura em concreto" loading="lazy" decoding="async">
-            <span class="carousel__tag">ÁREAS EXTERNAS</span>
-          </button>
-        </figure>
-
-        <figure class="carousel__item" data-index="8">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Cobertura em madeira com estrutura aparente e forro metálico, execução completa.">
-            <img src="assets/img/portfolio-cobertura-madeira.jpg" width="1050" height="1400" alt="Cobertura em madeira com estrutura aparente e forro metálico" loading="lazy" decoding="async">
-            <span class="carousel__tag">COBERTURAS</span>
-          </button>
-        </figure>
-
-        <figure class="carousel__item" data-index="9">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Revestimento externo em porcelanato tom corten, acabamento de cobertura e platibanda.">
-            <img src="assets/img/portfolio-revestimento-cobertura.jpg" width="1050" height="1400" alt="Revestimento externo em porcelanato tom corten em cobertura e platibanda" loading="lazy" decoding="async">
-            <span class="carousel__tag">REVESTIMENTOS</span>
-          </button>
-        </figure>
-
-        <figure class="carousel__item" data-index="10">
-          <button class="carousel__btn" type="button" data-lightbox-trigger data-caption="Banheiro com metais em preto fosco, cuba branca e marcenaria em madeira natural.">
-            <img src="assets/img/portfolio-banheiro-preto.jpg" width="1050" height="1400" alt="Banheiro com metais em preto fosco, cuba branca e marcenaria em madeira" loading="lazy" decoding="async">
-            <span class="carousel__tag">BANHEIROS</span>
-          </button>
-        </figure>
-
+        <div class="piece piece--cuba" data-m="cuba">
+          <span class="cuba__rim"></span>
+          <span class="cuba__basin"></span>
+        </div>
       </div>
-
-      <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Selecionar fotografia do portfólio"></div>
     </div>
+
+    <div class="montagem__text">
+      <h2 class="montagem__title" data-m="t1">DO PROJETO AO <span class="gold">ACABAMENTO.</span></h2>
+      <p class="montagem__sub" data-m="t2">Cada detalhe faz parte do resultado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJETOS / GALERIA ===================== -->
+<section class="gallery" id="portfolio">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-reveal>TRABALHOS REALIZADOS</p>
+      <h2 class="section-title" data-reveal-lines>
+        <span class="line"><span class="line__in">CADA OBRA CONTA</span></span>
+        <span class="line"><span class="line__in">A NOSSA <span class="gold">HISTÓRIA.</span></span></span>
+      </h2>
+    </header>
+  </div>
+
+  <div class="gallery__grid container container--wide">
+
+    <figure class="gitem gitem--a1" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Pia esculpida em porcelanato, integrada à bancada, com cuba entalhada sob medida.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-pia-esculpida.jpg" alt="Pia esculpida em porcelanato com cuba entalhada sob medida" loading="lazy" decoding="async" width="1032" height="774"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>PIA ESCULPIDA — PORCELANATO</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--a2" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Banheiro finalizado com revestimento em porcelanato calacatta do piso ao teto.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-banheiro.jpg" alt="Banheiro finalizado com revestimento em porcelanato calacatta e lavatório suspenso" loading="lazy" decoding="async" width="720" height="1280"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>BANHEIRO — CALACATTA</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--b1" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Bancada em porcelanato com veios de mármore calacatta e acabamento em meia-esquadria.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-bancada-ilha.jpg" alt="Bancada e ilha em porcelanato com veios de mármore e acabamento em meia-esquadria" loading="lazy" decoding="async" width="960" height="1280"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>BANCADA — MEIA-ESQUADRIA</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--b2" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Bancada dupla em porcelanato marrom, com cubas esculpidas e acabamento espelhado.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-bancada-marrom.jpg" alt="Bancada dupla em porcelanato marrom com cubas esculpidas" loading="lazy" decoding="async" width="1032" height="774"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>BANCADA DUPLA — CUBAS ESCULPIDAS</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--wide" data-gimg data-gparallax>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Piscina de alvenaria com borda em porcelanato e cascata, projeto completo de área externa.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-piscina.jpg" alt="Piscina de alvenaria com borda em porcelanato e cascata em área externa" loading="lazy" decoding="async" width="1054" height="1400"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>PISCINA — ÁREA EXTERNA COMPLETA</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--c1" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Escada revestida em porcelanato com contraste de tonalidades entre os ambientes.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-escada-porcelanato.jpg" alt="Escada revestida em porcelanato com contraste de tonalidades" loading="lazy" decoding="async" width="1050" height="1400"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>ESCADA — PORCELANATO</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--c2" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Escadaria externa e estrutura em concreto revestidas em porcelanato de alto tráfego.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-entrada-escada.jpg" alt="Escadaria externa em porcelanato e estrutura em concreto" loading="lazy" decoding="async" width="788" height="1400"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>ENTRADA — ÁREA EXTERNA</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--c3" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Banheiro com metais em preto fosco, cuba branca e marcenaria em madeira natural.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-banheiro-preto.jpg" alt="Banheiro com metais em preto fosco, cuba branca e marcenaria em madeira" loading="lazy" decoding="async" width="1050" height="1400"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>BANHEIRO — PRETO FOSCO</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--d1" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Cobertura em madeira com estrutura aparente e forro metálico, execução completa.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-cobertura-madeira.jpg" alt="Cobertura em madeira com estrutura aparente e forro metálico" loading="lazy" decoding="async" width="1050" height="1400"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>COBERTURA — MADEIRA</figcaption>
+    </figure>
+
+    <figure class="gitem gitem--d2" data-gimg>
+      <button type="button" class="gitem__btn" data-lightbox-trigger data-caption="Revestimento externo em porcelanato tom corten, acabamento de cobertura e platibanda.">
+        <span class="gitem__mask"><img src="assets/img/portfolio-revestimento-cobertura.jpg" alt="Revestimento externo em porcelanato tom corten em cobertura e platibanda" loading="lazy" decoding="async" width="1050" height="1400"></span>
+      </button>
+      <figcaption class="gitem__cap"><span class="gitem__cap-rule"></span>REVESTIMENTO — TOM CORTEN</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ===================== CINEMATIC ===================== -->
+<section class="cinema">
+  <div class="cinema__media">
+    <img src="assets/img/portfolio-escada-marmore.jpg" alt="Escada revestida em porcelanato calacatta com acabamento em relevo na parede" loading="lazy" decoding="async" width="1400" height="1050" class="cinema__img">
+    <div class="cinema__overlay"></div>
+  </div>
+  <div class="container cinema__content">
+    <h2 class="cinema__title" data-reveal-lines>
+      <span class="line"><span class="line__in">QUALIDADE ESTÁ</span></span>
+      <span class="line"><span class="line__in">NOS <span class="gold">DETALHES.</span></span></span>
+    </h2>
+    <p class="cinema__text" data-reveal>Alinhamentos, encaixes e finalização tratados com o mesmo cuidado em toda obra — do primeiro corte à entrega.</p>
   </div>
 </section>
 
 <!-- ===================== DIFERENCIAIS ===================== -->
 <section class="diferenciais" id="diferenciais">
   <div class="container">
-    <h2 class="section-title reveal">QUALIDADE ESTÁ<br>NOS <span class="gold">DETALHES.</span></h2>
+    <header class="section-head">
+      <p class="eyebrow eyebrow--dark" data-reveal>POR QUE A TA</p>
+      <h2 class="section-title" data-reveal-lines>
+        <span class="line"><span class="line__in">O QUE LEVAMOS PARA</span></span>
+        <span class="line"><span class="line__in">DENTRO DE CADA OBRA.</span></span>
+      </h2>
+    </header>
 
     <div class="diferenciais__grid">
-      <div class="diferencial reveal">
+      <div class="diferencial" data-reveal>
         <span class="diferencial__num">01</span>
         <h3>Experiência na Execução</h3>
         <p>Serviços executados com atenção técnica em cada etapa.</p>
       </div>
-      <div class="diferencial reveal">
+      <div class="diferencial" data-reveal>
         <span class="diferencial__num">02</span>
         <h3>Acabamento</h3>
         <p>Cuidado com alinhamentos, encaixes, detalhes e finalização.</p>
       </div>
-      <div class="diferencial reveal">
+      <div class="diferencial" data-reveal>
         <span class="diferencial__num">03</span>
         <h3>Soluções Personalizadas</h3>
         <p>Cada projeto recebe uma solução adequada ao espaço e às necessidades do cliente.</p>
       </div>
-      <div class="diferencial reveal">
+      <div class="diferencial" data-reveal>
         <span class="diferencial__num">04</span>
         <h3>Compromisso</h3>
         <p>Atendimento próximo desde o orçamento até a conclusão do serviço.</p>
@@ -340,39 +440,78 @@
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
-<section class="cta-section">
-  <div class="container cta-section__inner">
-    <h2 class="cta-section__title reveal">TEM UM PROJETO<br>EM <span class="gold">MENTE?</span></h2>
-    <p class="reveal">Conte para a gente o que você precisa e solicite seu orçamento pelo WhatsApp.</p>
-    <a href="#" class="btn btn--primary btn--lg reveal" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.12.13-.2.2-.33a.36.36 0 0 0 0-.35c-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 .98.71 1.93.81 2.06s1.4 2.13 3.38 2.99a11.4 11.4 0 0 0 1.13.42c.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
-      CHAMAR NO WHATSAPP
-    </a>
-    <a href="#" class="cta-section__phone" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">(47) 9 9282-7227</a>
+<!-- ===================== PROCESSO ===================== -->
+<section class="processo" id="processo">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-reveal>COMO TRABALHAMOS</p>
+      <h2 class="section-title" data-reveal-lines>
+        <span class="line"><span class="line__in">UM PROCESSO SIMPLES,</span></span>
+        <span class="line"><span class="line__in">DO COMEÇO À <span class="gold">ENTREGA.</span></span></span>
+      </h2>
+    </header>
+
+    <ol class="processo__steps" id="processoSteps">
+      <span class="processo__track" aria-hidden="true"><span class="processo__track-fill" id="processoFill"></span></span>
+
+      <li class="pstep" data-reveal>
+        <span class="pstep__dot" aria-hidden="true"></span>
+        <span class="pstep__num">01</span>
+        <h3 class="pstep__title">CONTATO</h3>
+        <p class="pstep__desc">Você nos chama pelo WhatsApp e conta o que precisa.</p>
+      </li>
+      <li class="pstep" data-reveal>
+        <span class="pstep__dot" aria-hidden="true"></span>
+        <span class="pstep__num">02</span>
+        <h3 class="pstep__title">AVALIAÇÃO</h3>
+        <p class="pstep__desc">Entendemos o espaço, o projeto e as necessidades da obra.</p>
+      </li>
+      <li class="pstep" data-reveal>
+        <span class="pstep__dot" aria-hidden="true"></span>
+        <span class="pstep__num">03</span>
+        <h3 class="pstep__title">ORÇAMENTO</h3>
+        <p class="pstep__desc">Apresentamos uma proposta clara para o serviço.</p>
+      </li>
+      <li class="pstep" data-reveal>
+        <span class="pstep__dot" aria-hidden="true"></span>
+        <span class="pstep__num">04</span>
+        <h3 class="pstep__title">EXECUÇÃO</h3>
+        <p class="pstep__desc">Execução cuidadosa, com atenção a cada detalhe.</p>
+      </li>
+      <li class="pstep" data-reveal>
+        <span class="pstep__dot" aria-hidden="true"></span>
+        <span class="pstep__num">05</span>
+        <h3 class="pstep__title">ENTREGA</h3>
+        <p class="pstep__desc">Obra finalizada, revisada e entregue pronta para uso.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
-<!-- ===================== CONTATO ===================== -->
-<section class="contato" id="contato">
-  <div class="container">
-    <p class="eyebrow reveal">FALE CONOSCO</p>
-    <h2 class="section-title reveal">VAMOS CONSTRUIR SEU <span class="gold">PROJETO?</span></h2>
+<!-- ===================== CTA FINAL ===================== -->
+<section class="cta" id="contato">
+  <div class="cta__media">
+    <img src="assets/img/hero-piscina.jpg" alt="" loading="lazy" decoding="async" width="1204" height="1600" class="cta__img">
+    <div class="cta__overlay"></div>
+  </div>
 
-    <div class="contato__grid">
-      <a href="#" class="contato__card reveal" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71z"/></svg>
-        <h3>WhatsApp</h3>
-        <p>(47) 9 9282-7227</p>
-        <span class="contato__link">Solicitar orçamento →</span>
+  <div class="container cta__inner">
+    <p class="eyebrow" data-reveal>FALE CONOSCO</p>
+    <h2 class="cta__title" data-reveal-lines>
+      <span class="line"><span class="line__in">VAMOS CONSTRUIR</span></span>
+      <span class="line"><span class="line__in">SEU <span class="gold">PROJETO?</span></span></span>
+    </h2>
+    <p class="cta__text" data-reveal>Conte para a gente o que você precisa e receba seu orçamento pelo WhatsApp.</p>
+
+    <div class="cta__actions" data-reveal>
+      <a href="#" class="btn btn--primary btn--lg" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.12.13-.2.2-.33a.36.36 0 0 0 0-.35c-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 .98.71 1.93.81 2.06s1.4 2.13 3.38 2.99a11.4 11.4 0 0 0 1.13.42c.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+        SOLICITAR ORÇAMENTO
       </a>
-
-      <div class="contato__card reveal">
-        <svg viewBox="0 0 24 24" class="icon icon--service" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        <h3>Localização</h3>
-        <p>Jaraguá do Sul e região</p>
-      </div>
+      <a href="#" class="cta__phone" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">(47) 9 9282-7227</a>
     </div>
+
+    <p class="cta__location" data-reveal>Jaraguá do Sul e região — SC</p>
   </div>
 </section>
 
@@ -382,18 +521,16 @@
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <img src="assets/logo.png" width="700" height="700" alt="Logo TA Construções e Acabamento" class="site-footer__logo" loading="lazy" decoding="async">
-
     <p class="site-footer__name">TA Construções e Acabamento</p>
-    <p class="site-footer__tagline">Construções • Porcelanato • Acabamentos</p>
-
+    <p class="site-footer__tagline">CONSTRUÇÕES&ensp;•&ensp;PORCELANATO&ensp;•&ensp;ACABAMENTOS</p>
     <a href="#" class="site-footer__wa" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento.">(47) 9 9282-7227</a>
-
-    <p class="site-footer__copy">© <span id="copyYear">2026</span> TA Construções e Acabamento.<br>Todos os direitos reservados.</p>
+    <p class="site-footer__copy">© <span id="copyYear">2026</span> TA Construções e Acabamento. Todos os direitos reservados.</p>
   </div>
 </footer>
 
 <!-- ===================== FLOATING WHATSAPP ===================== -->
 <a href="#" class="fab-wa" data-wa data-wa-text="Olá! Conheci a TA Construções e Acabamento e gostaria de solicitar um orçamento." aria-label="Falar no WhatsApp">
+  <span class="fab-wa__ring" aria-hidden="true"></span>
   <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58zM12.06 18.4h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.43-.16-.25a6.6 6.6 0 0 1 10.2-8.3 6.55 6.55 0 0 1 1.94 4.67 6.62 6.62 0 0 1-6.54 6.71zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 5.98 5.98 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.1-.1.2-.23.3-.35.1-.12.13-.2.2-.33a.36.36 0 0 0 0-.35c-.05-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 .98.71 1.93.81 2.06s1.4 2.13 3.38 2.99a11.4 11.4 0 0 0 1.13.42c.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
 </a>
 
@@ -414,6 +551,8 @@
   </button>
 </div>
 
+<script src="js/vendor/gsap.min.js" defer></script>
+<script src="js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="js/script.js" defer></script>
 </body>
 </html>
