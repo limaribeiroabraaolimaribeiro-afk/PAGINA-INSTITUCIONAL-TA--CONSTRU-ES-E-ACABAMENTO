@@ -186,13 +186,13 @@
     var lines = gsap.utils.toArray('.hero__title [data-intro="line"]');
     var goldLine = document.querySelector('.hero__title [data-intro="gold"]');
 
-    gsap.set('.hero__img', { scale:1.16 });
+    gsap.set('.hero__img', { scale:1.06 });
     /* y:0 clears the CSS translateY guard so only yPercent drives the reveal */
     gsap.set(lines.concat([goldLine]), { yPercent:110, y:0 });
 
     var tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
 
-    tl.to('.hero__img', { scale:1, duration:2.4, ease:'power2.out' }, 0)
+    tl.to('.hero__img', { scale:1, duration:2.6, ease:'power2.out' }, 0)
       .to('[data-intro="header"]', { opacity:1, duration:.9 }, .35)
       .fromTo('[data-intro="eyebrow"]',
         { opacity:0, x:-24 },
@@ -205,20 +205,19 @@
       .fromTo('[data-intro="cta"]',
         { opacity:0, y:22 },
         { opacity:1, y:0, duration:.9 }, 1.95)
-      .fromTo('[data-intro="perks"]',
-        { opacity:0, y:16 },
-        { opacity:1, y:0, duration:.9 }, 2.15)
-      .to('[data-intro="scroll"]', { opacity:1, duration:1 }, 2.4);
+      .to('[data-intro="scroll"]', { opacity:1, duration:1 }, 2.3);
 
-    /* hero parallax on scroll */
-    gsap.to('.hero__img', {
-      yPercent:14,
+    /* hero parallax on scroll — sutil, com micro-zoom para dar profundidade.
+       Aplicado no contêiner para não disputar o scale da <img> com a intro. */
+    gsap.to('.hero__media', {
+      yPercent:9,
+      scale:1.04,
       ease:'none',
       scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true }
     });
     gsap.to('.hero__content', {
-      yPercent:-8,
-      opacity:.25,
+      yPercent:-5,
+      opacity:.5,
       ease:'none',
       scrollTrigger:{ trigger:'.hero', start:'top top', end:'75% top', scrub:true }
     });

@@ -25,7 +25,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin-800-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin-400-normal.woff2" crossorigin>
-<link rel="preload" as="image" href="assets/img/hero-piscina.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/hero-escada.webp" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
 
 <script>
@@ -98,13 +98,16 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="topo">
   <div class="hero__media">
-    <img
-      src="assets/img/hero-piscina.jpg"
-      width="1204" height="1600"
-      alt="Piscina de alvenaria com borda em porcelanato, executada pela TA Construções e Acabamento"
-      class="hero__img"
-      fetchpriority="high"
-      decoding="async">
+    <picture>
+      <source srcset="assets/img/hero-escada.webp" type="image/webp">
+      <img
+        src="assets/img/hero-escada.jpg"
+        width="943" height="1650"
+        alt="Profissional instalando degraus de escada flutuante revestidos em mármore"
+        class="hero__img"
+        fetchpriority="high"
+        decoding="async">
+    </picture>
     <div class="hero__overlay"></div>
     <div class="hero__vignette"></div>
   </div>
@@ -128,12 +131,6 @@
       </a>
       <a href="#portfolio" class="hero__secondary">Ver projetos<span class="hero__secondary-arrow" aria-hidden="true">↓</span></a>
     </div>
-
-    <ul class="hero__perks" data-intro="perks">
-      <li>Compromisso com prazos</li>
-      <li>Acabamento de qualidade</li>
-      <li>Atendimento personalizado</li>
-    </ul>
   </div>
 
   <div class="hero__scroll" data-intro="scroll" aria-hidden="true">
