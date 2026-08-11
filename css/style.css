@@ -1203,6 +1203,11 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
   .fab-wa{ right:28px; bottom:28px; width:58px; height:58px; }
 }
 
+/* Refinamento mobile: afasta o botão da coluna central de leitura */
+@media (max-width:767px){
+  .fab-wa{ right:8px; bottom:14px; width:48px; height:48px; }
+}
+
 /* =====================================================
    LIGHTBOX
 ===================================================== */
@@ -1379,6 +1384,20 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
 
 @media (min-width:1280px){
   .quem__content{ padding:110px 84px 110px 72px; }
+}
+
+/* Refinamento mobile: alinhamento e espaçamento — não afeta tablet(768+)/desktop(1024+) */
+@media (max-width:767px){
+  .quem__content{ padding-top:44px; }
+  .quem__content .eyebrow{ margin-bottom:26px; }
+  .quem__title{ text-align:center; }
+  .quem__text{
+    margin-top:28px;
+    text-align:center;
+    margin-inline:auto;
+    max-width:30ch;
+  }
+  .quem__marcos{ margin-top:44px; }
 }
 
 /* =====================================================
