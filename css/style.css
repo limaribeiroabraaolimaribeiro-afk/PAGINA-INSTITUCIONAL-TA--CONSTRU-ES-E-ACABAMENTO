@@ -900,6 +900,96 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
 }
 
 /* =====================================================
+   SOLUÇÕES EXCLUSIVAS TA
+===================================================== */
+.exclusivos{
+  position:relative;
+  background:var(--black-deep);
+  padding:96px 0 100px;
+}
+
+.exclusivo{ margin-top:64px; }
+.exclusivo:first-of-type{ margin-top:56px; }
+.exclusivo + .exclusivo{
+  padding-top:64px;
+  border-top:1px solid rgba(198,161,91,.16);
+}
+
+.exclusivo__figure{
+  display:block;
+  overflow:hidden;
+}
+.exclusivo__figure .gitem__mask{ display:block; width:100%; height:100%; }
+.exclusivo__figure--single .gitem__mask{ aspect-ratio:3/3.6; }
+
+.exclusivo__media--pair{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.exclusivo__figure--main .gitem__mask{ aspect-ratio:4/3; }
+.exclusivo__figure--secondary .gitem__mask{ aspect-ratio:3/3.4; }
+
+.exclusivo__content{ margin-top:30px; }
+.exclusivo__label{
+  display:flex; align-items:baseline; gap:16px;
+  margin-bottom:18px;
+}
+.exclusivo__num{
+  font-size:.78rem; font-weight:700; letter-spacing:.18em;
+  color:rgba(198,161,91,.55);
+}
+.exclusivo__badge{
+  display:flex; align-items:center; gap:12px;
+  color:var(--gold);
+  font-size:.7rem; font-weight:700; letter-spacing:.22em;
+}
+.exclusivo__badge::before{
+  content:'';
+  width:26px; height:1px;
+  background:var(--gold);
+  opacity:.75;
+  flex-shrink:0;
+}
+.exclusivo__title{
+  font-size:clamp(1.5rem, 6.4vw, 2.1rem);
+  font-weight:800;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+.exclusivo__text{
+  margin-top:16px;
+  max-width:46ch;
+  color:rgba(255,255,255,.66);
+  font-size:.94rem;
+  line-height:1.7;
+}
+
+@media (min-width:600px){
+  .exclusivo__media--pair{ flex-direction:row; }
+  .exclusivo__figure--main{ flex:0 0 62%; }
+  .exclusivo__figure--secondary{ flex:1; }
+}
+
+@media (min-width:1024px){
+  .exclusivos{ padding:140px 0 150px; }
+  .exclusivo{
+    display:grid;
+    grid-template-columns:58% 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .exclusivo:first-of-type{ margin-top:80px; }
+  .exclusivo + .exclusivo{ padding-top:80px; }
+  .exclusivo__content{ margin-top:0; }
+  .exclusivo--reverse{ grid-template-columns:1fr 58%; }
+  .exclusivo--reverse .exclusivo__media{ order:2; }
+  .exclusivo--reverse .exclusivo__content{ order:1; }
+  .exclusivo__figure--single .gitem__mask{ aspect-ratio:5/4; }
+}
+
+/* =====================================================
    CINEMATIC
 ===================================================== */
 .cinema{
@@ -1215,9 +1305,9 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
   .fab-wa{ right:28px; bottom:28px; width:58px; height:58px; }
 }
 
-/* Refinamento mobile: afasta o botão da coluna central de leitura */
+/* Refinamento mobile: afasta o botão da coluna central de leitura e aproxima do canto inferior para reduzir sobreposição com textos de largura total */
 @media (max-width:767px){
-  .fab-wa{ right:8px; bottom:14px; width:48px; height:48px; }
+  .fab-wa{ right:8px; bottom:6px; width:48px; height:48px; }
 }
 
 /* =====================================================
