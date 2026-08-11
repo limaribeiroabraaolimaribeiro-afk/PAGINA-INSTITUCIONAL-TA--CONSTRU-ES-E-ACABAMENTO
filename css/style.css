@@ -1256,6 +1256,132 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
 }
 
 /* =====================================================
+   QUEM EXECUTA — seção institucional
+===================================================== */
+.quem{
+  position:relative;
+  background:var(--black-deep);
+  overflow:hidden;
+}
+
+.quem__media{
+  position:relative;
+  width:100%;
+  height:80vh;
+  height:80svh;
+  overflow:hidden;
+}
+.quem__media img{
+  position:absolute;
+  left:0; top:-7%;
+  width:100%; height:114%;
+  object-fit:cover;
+  object-position:25% 50%;
+  will-change:transform;
+}
+/* gradiente inferior + lateral, transição gradual — preserva rosto e bancada */
+.quem__media::before{
+  content:'';
+  position:absolute; inset:0; z-index:1;
+  background:
+    linear-gradient(180deg, rgba(8,8,8,.28) 0%, rgba(8,8,8,0) 16%, rgba(8,8,8,0) 46%, rgba(8,8,8,.42) 74%, rgba(8,8,8,.92) 94%, var(--black-deep) 100%),
+    linear-gradient(90deg, rgba(8,8,8,.22) 0%, rgba(8,8,8,0) 30%);
+}
+/* vinheta muito discreta */
+.quem__media::after{
+  content:'';
+  position:absolute; inset:0; z-index:1;
+  background:radial-gradient(120% 90% at 50% 42%, rgba(0,0,0,0) 62%, rgba(0,0,0,.22) 100%);
+}
+/* filete dourado de acabamento */
+.quem__media-edge{
+  position:absolute; left:20px; bottom:0; z-index:2;
+  width:54px; height:2px;
+  background:linear-gradient(90deg, var(--gold), rgba(198,161,91,0));
+}
+
+.quem__content{
+  position:relative; z-index:2;
+  padding:34px 20px 78px;
+  margin-top:-9vh;
+}
+.quem__title{ color:var(--white); }
+.quem__text{
+  margin-top:22px;
+  max-width:52ch;
+  color:rgba(255,255,255,.72);
+  font-size:.98rem;
+  line-height:1.7;
+}
+.quem__marcos{
+  margin-top:36px;
+  display:flex; flex-direction:column; gap:22px;
+}
+.quem__marco{
+  position:relative;
+  padding-left:18px;
+  border-left:1px solid rgba(198,161,91,.45);
+}
+.quem__marco-label{
+  display:block;
+  color:var(--gold);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.22em;
+  margin-bottom:6px;
+}
+.quem__marco p{
+  color:rgba(255,255,255,.6);
+  font-size:.9rem;
+  line-height:1.55;
+}
+
+@media (min-width:480px){
+  .quem__media{ height:84vh; height:84svh; }
+}
+
+@media (min-width:768px){
+  .quem__content{ padding:40px 32px 90px; }
+  .quem__marcos{ flex-direction:row; gap:34px; }
+  .quem__marco{ flex:1; }
+}
+
+@media (min-width:1024px){
+  .quem__inner{
+    display:grid;
+    grid-template-columns:55% 1fr;
+    align-items:center;
+    min-height:88vh;
+  }
+  .quem__media{
+    height:88vh;
+    min-height:640px;
+  }
+  .quem__media img{ object-position:30% 36%; }
+  /* no desktop o texto fica ao lado: gradiente vira transição p/ a direita */
+  .quem__media::before{
+    background:
+      linear-gradient(180deg, rgba(8,8,8,.24) 0%, rgba(8,8,8,0) 18%, rgba(8,8,8,0) 70%, rgba(8,8,8,.5) 100%),
+      linear-gradient(90deg, rgba(8,8,8,0) 55%, rgba(8,8,8,.38) 84%, var(--black-deep) 100%);
+  }
+  .quem__media-edge{
+    left:auto; right:0; bottom:64px;
+    width:2px; height:120px;
+    background:linear-gradient(180deg, var(--gold), rgba(198,161,91,0));
+  }
+  .quem__content{
+    margin-top:0;
+    padding:90px 64px 90px 58px;
+    max-width:620px;
+  }
+  .quem__marcos{ flex-direction:column; gap:26px; margin-top:44px; }
+}
+
+@media (min-width:1280px){
+  .quem__content{ padding:110px 84px 110px 72px; }
+}
+
+/* =====================================================
    LARGE DESKTOP RHYTHM
 ===================================================== */
 @media (min-width:1280px){

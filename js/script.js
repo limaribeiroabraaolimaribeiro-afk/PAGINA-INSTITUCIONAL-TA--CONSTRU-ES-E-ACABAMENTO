@@ -299,6 +299,33 @@
   }
 
   /* ---------------------------------------------------
+     GSAP — quem executa (institucional)
+  --------------------------------------------------- */
+  function initQuem(){
+    var gsap = window.gsap;
+    var media = document.querySelector('[data-quem-media]');
+    if(!media) return;
+    var img = media.querySelector('img');
+
+    gsap.fromTo(media,
+      { clipPath:'inset(0 0 100% 0)' },
+      {
+        clipPath:'inset(0 0 0% 0)',
+        duration:1.35,
+        ease:'power4.out',
+        scrollTrigger:{ trigger:media, start:'top 82%', once:true }
+      });
+
+    gsap.fromTo(img,
+      { yPercent:-5, scale:1 },
+      {
+        yPercent:5, scale:1.03,
+        ease:'none',
+        scrollTrigger:{ trigger:media, start:'top bottom', end:'bottom top', scrub:true }
+      });
+  }
+
+  /* ---------------------------------------------------
      GSAP — cinematic section
   --------------------------------------------------- */
   function initCinema(){
@@ -447,6 +474,7 @@
 
     initHeroIntro();
     initReveals();
+    initQuem();
     initGallery();
     initCinema();
     initCta();
