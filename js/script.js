@@ -303,6 +303,7 @@
   --------------------------------------------------- */
   function initQuem(){
     var gsap = window.gsap;
+    var ScrollTrigger = window.ScrollTrigger;
     var media = document.querySelector('[data-quem-media]');
     if(!media) return;
     var img = media.querySelector('img');
@@ -323,6 +324,48 @@
         ease:'none',
         scrollTrigger:{ trigger:media, start:'top bottom', end:'bottom top', scrub:true }
       });
+
+    /* narrativa: assinatura, texto e diferenciais surgem em sequência */
+    var content = document.querySelector('.quem__content');
+    if(!content) return;
+
+    var name = content.querySelector('.quem__signature-name');
+    var role = content.querySelector('.quem__signature-role');
+    var textBlocks = content.querySelectorAll('.quem__text-block');
+    var marcos = content.querySelectorAll('.quem__marco');
+    var isDesktop = window.innerWidth >= 1024;
+    var ov = isDesktop ? '+=0.05' : '-=0.28';
+
+    if(name && role){
+      var tl = gsap.timeline({
+        scrollTrigger:{ trigger:content, start:'top 76%', once:true }
+      });
+
+      tl.fromTo(name, { opacity:0, y:16 }, { opacity:1, y:0, duration:.55, ease:'power3.out' })
+        .fromTo(role, { opacity:0, y:12 }, { opacity:1, y:0, duration:.45, ease:'power3.out' }, '-=0.3')
+        .fromTo(textBlocks, { opacity:0, y:14 }, { opacity:1, y:0, duration:.55, stagger:.14, ease:'power3.out' }, ov);
+
+      marcos.forEach(function(marco){
+        var label = marco.querySelector('.quem__marco-label');
+        var text = marco.querySelector('.quem__marco p');
+        tl.fromTo(label, { opacity:0, y:12 }, { opacity:1, y:0, duration:.4, ease:'power3.out' }, ov)
+          .fromTo(text, { opacity:0, y:10 }, { opacity:1, y:0, duration:.4, ease:'power3.out' }, '-=0.25');
+      });
+    }
+
+    /* destaque ativo por diferencial durante a rolagem */
+    if(marcos.length && ScrollTrigger){
+      var marcosList = document.querySelector('.quem__marcos');
+      if(marcosList) marcosList.classList.add('quem__marcos--interactive');
+      marcos.forEach(function(marco){
+        ScrollTrigger.create({
+          trigger: marco,
+          start: 'top 64%',
+          end: 'bottom 44%',
+          toggleClass: { targets: marco, className: 'is-active' }
+        });
+      });
+    }
   }
 
   /* ---------------------------------------------------

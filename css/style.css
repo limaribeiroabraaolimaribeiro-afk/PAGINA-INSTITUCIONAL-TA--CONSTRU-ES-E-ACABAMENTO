@@ -1433,13 +1433,36 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
   margin-top:-9vh;
 }
 .quem__title{ color:var(--white); }
+.quem__signature{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.quem__signature-name{
+  font-size:1.15rem;
+  font-weight:800;
+  letter-spacing:.05em;
+  color:var(--white);
+}
+.quem__signature-role{
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--gold);
+}
+.quem__signature-sep{ opacity:.55; margin:0 1px; }
 .quem__text{
   margin-top:22px;
   max-width:52ch;
-  color:rgba(255,255,255,.72);
+  color:#ededed;
   font-size:.98rem;
   line-height:1.7;
 }
+.quem__text-block{ display:block; }
+.quem__text-block + .quem__text-block{ margin-top:6px; }
+.quem__highlight{ color:var(--white); font-weight:700; }
+.quem__highlight--gold{ color:var(--gold-light); }
 .quem__marcos{
   margin-top:36px;
   display:flex; flex-direction:column; gap:22px;
@@ -1448,7 +1471,10 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
   position:relative;
   padding-left:18px;
   border-left:1px solid rgba(198,161,91,.45);
+  transition:opacity .5s ease;
 }
+.quem__marcos--interactive .quem__marco{ opacity:.55; }
+.quem__marcos--interactive .quem__marco.is-active{ opacity:1; }
 .quem__marco-label{
   display:block;
   color:var(--gold);
@@ -1456,9 +1482,11 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
   font-weight:700;
   letter-spacing:.22em;
   margin-bottom:6px;
+  transition:color .45s ease;
 }
+.quem__marco.is-active .quem__marco-label{ color:var(--gold-light); }
 .quem__marco p{
-  color:rgba(255,255,255,.6);
+  color:#dadada;
   font-size:.9rem;
   line-height:1.55;
 }
@@ -1513,6 +1541,7 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
   .quem__content{ padding-top:44px; }
   .quem__content .eyebrow{ margin-bottom:26px; }
   .quem__title{ text-align:center; }
+  .quem__signature{ align-items:center; text-align:center; }
   .quem__text{
     margin-top:28px;
     text-align:center;
