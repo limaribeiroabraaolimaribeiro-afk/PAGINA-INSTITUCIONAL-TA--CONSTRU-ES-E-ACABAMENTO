@@ -28,6 +28,15 @@
 <link rel="preload" as="image" href="assets/img/hero-escada.webp" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
 
+<!-- ===== BLOQUEIO TEMPORÁRIO — ponto central de controle =====
+     Altere para false para restaurar o site normalmente. ===== -->
+<script>
+  window.SITE_BLOCKED = true;
+  if(window.SITE_BLOCKED){
+    document.documentElement.classList.add('is-blocked');
+  }
+</script>
+
 <script>
 (function(){
   try{
@@ -51,6 +60,20 @@
 </script>
 </head>
 <body>
+
+<!-- ===================== BLOQUEIO TEMPORÁRIO (pendência financeira) =====================
+     Controlado por window.SITE_BLOCKED no <head>. Isolado do restante do site. ===================== -->
+<div id="siteBlock" class="site-block" hidden>
+  <div class="site-block__inner">
+    <img src="assets/logo.png" width="200" height="200" alt="TA Construções e Acabamento" class="site-block__logo">
+    <span class="site-block__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+    </span>
+    <h1 class="site-block__title">PÁGINA TEMPORARIAMENTE INDISPONÍVEL</h1>
+    <p class="site-block__text">Existe uma pendência financeira vinculada a esta página.<br>Regularize o pagamento para restaurar o acesso ao site.</p>
+    <a href="https://limaribeiroabraaolimaribeiro-afk.github.io/Smart-Billingg/cobranca-publica.html?token=9eafe310-e38c-459d-9e98-784eca6432ea" target="_blank" rel="noopener noreferrer" class="site-block__btn">REGULARIZAR PAGAMENTO</a>
+  </div>
+</div>
 
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
