@@ -541,6 +541,14 @@
      Init
   --------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', function(){
+    /* Bloqueio temporário (pendência financeira): gate central —
+       quando ativo, nenhuma outra inicialização do site roda. */
+    if(window.SITE_BLOCKED){
+      var siteBlock = document.getElementById('siteBlock');
+      if(siteBlock) siteBlock.hidden = false;
+      return;
+    }
+
     initWhatsAppLinks();
     initHeaderScroll();
     initMobileNav();

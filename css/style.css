@@ -1580,3 +1580,101 @@ html.motion .hero__title [data-intro]{ opacity:1; transform:translateY(110%); }
   .processo{ padding:150px 0 160px; }
   .cta{ padding:170px 0; }
 }
+
+/* =====================================================
+   BLOQUEIO TEMPORÁRIO (pendência financeira)
+   Ativado/desativado via window.SITE_BLOCKED no <head> do index.html.
+   Isolado do restante do site: não altera nenhuma regra acima.
+===================================================== */
+.site-block{ display:none; }
+
+html.is-blocked #siteHeader,
+html.is-blocked #mobileNav,
+html.is-blocked #conteudo,
+html.is-blocked .site-footer,
+html.is-blocked .fab-wa,
+html.is-blocked #lightbox{
+  display:none !important;
+}
+
+html.is-blocked .site-block{
+  display:flex;
+  position:fixed;
+  inset:0;
+  z-index:500;
+  align-items:center;
+  justify-content:center;
+  min-height:100svh;
+  background:var(--black-deep);
+  padding:32px 22px;
+  overflow-y:auto;
+}
+
+.site-block__inner{
+  width:100%;
+  max-width:440px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.site-block__logo{
+  width:64px; height:64px;
+  object-fit:contain;
+  border-radius:10px;
+  margin-bottom:22px;
+}
+
+.site-block__icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:56px; height:56px;
+  border-radius:50%;
+  border:1px solid rgba(198,161,91,.4);
+  margin-bottom:24px;
+  flex-shrink:0;
+}
+.site-block__icon svg{
+  width:24px; height:24px;
+  fill:none;
+  stroke:var(--gold);
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.site-block__title{
+  font-size:clamp(1.3rem, 5.4vw, 1.7rem);
+  font-weight:800;
+  letter-spacing:-.01em;
+  line-height:1.28;
+  text-transform:uppercase;
+  color:var(--white);
+}
+
+.site-block__text{
+  margin-top:16px;
+  max-width:38ch;
+  color:rgba(255,255,255,.7);
+  font-size:.96rem;
+  line-height:1.65;
+}
+
+.site-block__btn{
+  margin-top:32px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 30px;
+  font-size:.86rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  color:var(--black-deep);
+  background:var(--gold);
+  border-radius:3px;
+  transition:background .25s ease, transform .25s ease;
+}
+.site-block__btn:hover{ background:var(--gold-light); transform:translateY(-2px); }
+.site-block__btn:active{ transform:scale(.97); }
