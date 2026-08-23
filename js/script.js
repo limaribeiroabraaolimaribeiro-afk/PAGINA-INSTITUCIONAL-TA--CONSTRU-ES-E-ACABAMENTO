@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  var WHATSAPP_NUMBER = '5547992827227';
+  var WHATSAPP_NUMBER = '554792827227';
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
   var motionOn = !prefersReducedMotion && hasGsap;
